@@ -8,7 +8,7 @@ export default {
     extend: {
       screens: {
         'xsm': {'min': '320px', 'max': '767px'},
-        'md-max': {'max': '988px'},
+        'md-max': {'min': '768px', 'max': '988px'},
       },
     },
   },
