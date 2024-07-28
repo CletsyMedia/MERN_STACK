@@ -2,8 +2,18 @@ import React, { useState } from "react";
 import { HiBars3 } from "react-icons/hi2";
 import { VscClose } from "react-icons/vsc";
 import { Link } from "react-router-dom";
+import { useSelector, useDispatch } from 'react-redux';
+import Dropdown from "./Dropdown";
+
+
 
 const Navbar = () => {
+
+  // Getting user info
+  const { userInfo } = useSelector((state) => state.auth);
+  console.log(userInfo);
+
+
   const [isOpen, setIsOpen] = useState(false);
 
   const toggleMenu = () => {
@@ -47,17 +57,21 @@ const authLinks = [
           </div>
         </div>
 
-        <div className="flex items-center gap-2">
-        {authLinks.map((link) => (
-            <Link
-              key={link.to}
-              to={link.to}
-              className="block px-3 py-2 text-lg hover:bg-gray-700 rounded"
-            >
-              {link.label}
-            </Link>
-          ))}
 
+        <div className="flex items-center gap-2">
+          {userInfo ? (
+              <Dropdown userName={userInfo.name} />
+          ) : (
+            authLinks.map((link) => (
+              <Link
+                key={link.to}
+                to={link.to}
+                className="block px-3 py-2 text-lg hover:bg-gray-700 rounded"
+              >
+                {link.label}
+              </Link>
+            ))
+          )}
           <label className="md:hidden bg-white text-black rounded-md relative flex items-center justify-center w-8 h-8 overflow-hidden cursor-pointer">
             <input
               type="checkbox"

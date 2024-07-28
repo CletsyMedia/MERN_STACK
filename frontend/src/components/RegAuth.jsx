@@ -31,7 +31,7 @@ const RegAuth = () => {
   };
 
   return (
-    <div className="flex items-center justify-center min-h-screen p-4 bg-gray-100">
+    <div className="flex items-center justify-center h-screen p-4 bg-gray-100">
       <div className="w-full max-w-md bg-white p-8 rounded-lg shadow-sm space-y-6">
         <h2 className="text-2xl font-semibold text-center text-gray-800">Register</h2>
 
