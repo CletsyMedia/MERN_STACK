@@ -1,13 +1,11 @@
 import React from 'react';
+import store from './store';
+import { Provider } from 'react-redux';
 import { createBrowserRouter, createRoutesFromElements, Route, RouterProvider } from 'react-router-dom';
 import Landing from './pages/Landing';
 import Login from './pages/Login';
 import Register from './pages/Register';
 import Layout from './components/Layout';
-
-// import About from './pages/About';
-// import Services from './pages/Services';
-// import Contact from './pages/Contact';
 
 // Create the router object
 const router = createBrowserRouter(
@@ -25,7 +23,9 @@ const router = createBrowserRouter(
 
 function App() {
   return (
-    <RouterProvider router={router} />
+    <Provider store={store}>
+      <RouterProvider router={router} />
+    </Provider>
   );
 }
 
