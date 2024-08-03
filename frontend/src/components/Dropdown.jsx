@@ -1,8 +1,9 @@
-import React, { useState } from 'react';
-import { HiChevronDown } from 'react-icons/hi';
-import { Link, useNavigate } from 'react-router-dom';
-import { useDispatch } from 'react-redux';
-import { logout } from '../slices/AuthSlice';
+import React, { useState } from "react";
+import { HiChevronDown } from "react-icons/hi";
+import { Link, useNavigate } from "react-router-dom";
+import { useDispatch } from "react-redux";
+import { logout } from "../slices/AuthSlice";
+import { useLogoutMutation } from "../slices/UsersApiSlice";
 
 const Dropdown = ({ userName }) => {
   const [isOpen, setIsOpen] = useState(false);
@@ -12,10 +13,16 @@ const Dropdown = ({ userName }) => {
   const toggleDropdown = () => {
     setIsOpen(!isOpen);
   };
+  const [loggingOut] = useLogoutMutation();
 
-  const handleLogout = () => {
-    dispatch(logout()); // Dispatch the logout action
-    navigate('/login'); // Redirect to login page after logout
+  const handleLogout = async () => {
+    try {
+      await loggingOut().unwrap();
+      dispatch(logout());
+      navigate("/login");
+    } catch (error) {
+      console.log(error);
+    }
   };
 
   return (

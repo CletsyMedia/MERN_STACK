@@ -16,9 +16,10 @@ const LoginAuth = () => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
 
-  const [login, { isLoading }] = useLoginMutation();
+  const [login] = useLoginMutation();
 
   const { userInfo } = useSelector((state) => state.auth);
+
   useEffect(() => {
     if (userInfo){
       navigate("/")
@@ -30,7 +31,7 @@ const LoginAuth = () => {
     setLoading(true);
 
     try {
-      const res = await login({ email, password }).unwrap();
+    const res = await login({ email, password }).unwrap();
     dispatch(setCredentials({ ...res }));
     navigate("/");
     } catch (err) {
@@ -41,7 +42,7 @@ const LoginAuth = () => {
     // Simulate a delay for loading
     setTimeout(() => {
       setLoading(false);
-    }, 2000);
+    }, 1000);
   };
 
   return (
