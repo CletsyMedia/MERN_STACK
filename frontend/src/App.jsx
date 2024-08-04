@@ -6,6 +6,8 @@ import Landing from './pages/Landing';
 import Login from './pages/Login';
 import Register from './pages/Register';
 import Layout from './components/Layout';
+import Updateprofile from './pages/UpdateProfile';
+import PrivateRoute from './components/PrivateRoute';
 
 // Create the router object
 const router = createBrowserRouter(
@@ -14,9 +16,12 @@ const router = createBrowserRouter(
       <Route index path="/" element={<Landing />} />
       <Route path="/login" element={<Login />} />
       <Route path="/register" element={<Register />} />
-      {/* <Route path="/about" element={<About />} />
-      <Route path="/services" element={<Services />} />
-      <Route path="/contact" element={<Contact />} /> */}
+      <Route path='' element={<PrivateRoute />}>
+      <Route path="/updateprofile" element={<Updateprofile />} />
+      </Route>
+      {/* {/* <Route path="/about" element={<About />} /> */}
+      {/* <Route path="/services" element={<Services />} /> */}
+      {/* <Route path="/contact" element={<Contact />} /> */}
     </Route>
   )
 );
