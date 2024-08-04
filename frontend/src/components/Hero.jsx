@@ -1,7 +1,11 @@
 import React from 'react';
 import { Link } from "react-router-dom";
+import { useSelector } from 'react-redux';
 
 const Hero = () => {
+
+  const { userInfo } = useSelector((state) => state.auth);
+
   return (
     <div
       className="relative min-h-screen bg-cover bg-center"
@@ -18,7 +22,8 @@ const Hero = () => {
           <p className="text-lg mb-8">
             Elevate your development skills with a comprehensive understanding of MongoDB, Express, React, and Node.js. Our tailored courses and resources will guide you through every aspect of the MERN stack, ensuring you gain practical experience and deep insights into full-stack development.
           </p>
-          <div className="flex flex-row items-center justify-center gap-3">
+          { !userInfo ? (
+            <div className="flex flex-row items-center justify-center gap-3">
             <Link to="/login">
               <button className="btn  border-0 btn-primary w-24 text-lg bg-blue-600 hover:bg-blue-700 rounded-lg shadow-md transition duration-300">
                 Login
@@ -30,6 +35,8 @@ const Hero = () => {
               </button>
             </Link>
           </div>
+          ): null}
+          
         </div>
       </div>
     </div>

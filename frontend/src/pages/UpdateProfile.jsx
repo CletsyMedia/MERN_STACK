@@ -147,7 +147,10 @@ const Updateprofile = () => {
 
           <button
             type="submit"
-            className="w-full py-2 px-4 bg-blue-600 text-white rounded-lg hover:bg-blue-700 focus:outline-none relative"
+            className={`w-full py-2 px-4 bg-blue-600 text-white rounded-lg hover:bg-blue-700 focus:outline-none relative ${
+              loading ? "cursor-not-allowed opacity-50" : ""
+            }`}
+            disabled={loading} // Disable button when loading
           >
             <span
               className={`absolute inset-0 flex items-center justify-center transition-opacity ${
