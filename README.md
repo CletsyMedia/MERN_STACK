@@ -2,7 +2,7 @@
 
 This project demonstrates a full-stack authentication application using the MERN stack (MongoDB, Express, React, Node.js), along with additional technologies and tools for enhanced functionality and development efficiency.
 
-![Screenshot](/frontend/src/assets/screenshot.png)
+![Screenshot](/frontend/src/assets/mern.png)
 
 ## Technologies Used
 
